@@ -414,6 +414,10 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
     Header: Basic Authentication (optional - if present additional ref links will be returned)
             Response Content-Type : application/json
                                   : application/msexcel
+    Parameters:
+                q (optional)		: text to perform freetext search on
+                keywords (optional)	: array of keywords to filter
+                property (optional)	: properties to filter
 #### Responses ####
 		200 : OK
 			Body: {:status 200,
