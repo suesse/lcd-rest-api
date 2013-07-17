@@ -6,8 +6,9 @@ import org.json4s.{Formats, DefaultFormats}
 import org.scalatra.json._
 import edu.mayo.lcd.rest.model.{User}
 import org.scalatra.ScalatraServlet
+import scala.slick.session.Database
 
-class UsersController(implicit val swagger: Swagger) extends ScalatraServlet with NativeJsonSupport with SwaggerSupport {
+class UsersController(implicit val swagger: Swagger, implicit val database: Database) extends ScalatraServlet with NativeJsonSupport with SwaggerSupport {
   protected implicit val jsonFormats: Formats = DefaultFormats
 
   // The name of our application. This will show up in the Swagger docs.
@@ -29,8 +30,8 @@ class UsersController(implicit val swagger: Swagger) extends ScalatraServlet wit
 
   get("/", operation(getUsers)) {
     params.get("enabled") match {
-      case Some(en) => User.getAllUsers(params.get("role"), Some(en.equalsIgnoreCase("true")))
-      case None => User.getAllUsers(params.get("role"), None)
+      case Some(en) => User.getAllUsers(params.get("role"), Some(en.equalsIgnoreCase("true")), database)
+      case None => User.getAllUsers(params.get("role"), None, database)
     }
   }
 
