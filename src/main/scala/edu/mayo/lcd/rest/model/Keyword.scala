@@ -30,9 +30,3 @@ object Keyword extends Table[(Int, String, Int, Date)]("keyword") {
     keywords
   }
 }
-
-object DefinitionKeywordsTable extends Table[(String, String)]("definition_keywords") {
-  def definitionId = column[String]("definitionId", O.NotNull)
-  def keyword = column[String]("keyword", O.NotNull)
-  def * = definitionId ~ keyword
-}
