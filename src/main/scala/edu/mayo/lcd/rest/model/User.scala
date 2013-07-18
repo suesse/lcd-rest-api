@@ -9,7 +9,8 @@ object UserColumns extends Enumeration {
   val id, lanId, enabled = Value
 }
 
-case class User(id: Int, name: String, role: String, enabled: Boolean)
+case class
+User(id: Int, name: String, role: String, enabled: Boolean)
 
 object User extends Table[(Int, String, Boolean)]("USER") {
   def id = column[Int](UserColumns.id.toString, O.PrimaryKey)
