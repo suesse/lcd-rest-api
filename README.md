@@ -59,16 +59,13 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
 #### Responses ####
         200 : OK
         Body:
-            {:status 200,
-             :body
-             {:user
-              {:id "M091355",
-               :role "admin",
-               :enabled true,
-               :refs
-               [{:href "http://host/user", :rel "self"},
-                {:href "http://host/user", :rel "update"},
-                {:href "http://host/user", :rel "delete"}]}}
+            {"user" : {
+        	 "id" : "M091355",
+             "roles" : ["ADMIN", "SUPER_USER"],
+          	 "enabled" : true,
+        	 "refs" : [{"href" : "http://host/user/M091355", "rel" : "self"},
+                       {"href" : "http://host/user/M091355", "rel" : "update"},
+                       {"href" : "http://host/user/M091355", "rel" : "delete"}]}}
         401 : Unauthorized
 		404 : Not Found
 		500 : Server Error
@@ -81,25 +78,15 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
 #### Responses ####
         200 : OK
 		    Body:
-    		    {:status 200,
-                 :body
-                  :users
-                  [:user
-                   {:id "M091355",
-                    :role "admin",
-                    :enabled true,
-                    :refs
-                    [{:href "http://host/user", :rel "self"},
-                     {:href "http://host/user", :rel "update"},
-                     {:href "http://host/user", :rel "delete"}]},
-                   :user
-                   {:id "M094545",
-                    :role "readonly",
-                    :enabled true,
-                    :refs
-                    [{:href "http://host/user", :rel "self"},
-                     {:href "http://host/user", :rel "update"},
-                     {:href "http://host/user", :rel "delete"}]}]}
+                {"users" :
+                 [{"user" : {
+                   "id" : "M091355",
+                   "roles" : ["ADMIN", "SUPER_USER"],
+                   "enabled" : true,
+                   "refs" : [{"href" : "http://host/user/M091355", "rel" : "self"},
+                             {"href" : "http://host/user/M091355", "rel" : "update"},
+                        	{"href" : "http://host/user/M091355", "rel" : "delete"}]}}},
+			      {"user" : {…}}]}
    		401 : Unauthorized
 		500 : Server Error
 
@@ -147,15 +134,13 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
             Response Content-Type: application/json
 #### Responses ####
 		200 : OK
-            Body: {:status 200,
-                   :body
-                   {:keyword
-                    {:id "123456-1234-1234-1234-12345678",
-                     :keyword "Foobar",
-                     :refs
-                     [{:href "http://host/keyword/{keyword-id}", :rel "self"},
-                      {:href "http://host/keyword/{keyword-id}", :rel "update"},
-                      {:href "http://host/keyword/{keyword-id}", :rel "delete"}]}}}
+            Body: 
+                {"keyword" : {
+             	 "id" : "123456",
+            	 "keyword" : "Foobar",
+            	 "refs" : [{"href" : "http://host/keyword/123456", "rel" : "self"},
+                           {"href" : "http://host/keyword/123456", "rel" : "update"},
+                           {"href" : "http://host/keyword/123456", "rel" : "delete"}]}}
 		404 : Not Found
 		500 : Server Error
 		
@@ -166,23 +151,15 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
             Response Content-Type: application/json
 #### Responses ####
 		200 : OK
-            Body: {:status 200,
-                   :body
-                   {:keywords
-                    [:property
-                     {:id "123456-1234-1234-1234-12345678",
-                      :keyword "Foobar",
-                      :refs
-                      [{:href "http://host/keyword/{keyword-id}", :rel "self"},
-                       {:href "http://host/keyword/{keyword-id}", :rel "update"},
-                       {:href "http://host/keyword/{keyword-id}", :rel "delete"}]},
-                     :property
-                     {:id "987654-9876-9876-9876-98765432",
-                      :keyword "BazBang",
-                      :refs
-                      [{:href "http://host/keyword/{keyword-id}", :rel "self"},
-                       {:href "http://host/keyword/{keyword-id}", :rel "update"},
-                       {:href "http://host/keyword/{keyword-id}", :rel "delete"}]}]}}
+            Body: 
+                {"keywords" :
+                 [{"keyword" : {
+	               "id" : "123456",
+                   "keyword" : "Foobar",
+                   "refs" : [{"href" : "http://host/keyword/123456", "rel" : "self"},
+                             {"href" : "http://host/keyword/123456", "rel" : "update"},
+                             {"href" : "http://host/keyword/123456", "rel" : "delete"}]}},
+                  {"keyword" : {…}}]}
 		500 : Server Error
 
 ## Properties ##
@@ -229,20 +206,17 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
             Response Content-Type: application/json
 #### Responses ####
 		200 : OK
-            Body: {:status 200,
-                   :body
-                   {:property
-                    {:id "123456-1234-1234-1234-12345678",
-                     :property "System",
-                     :userdefined false,
-                     :values
-                     [{:id "123", :value "DMS"},
-                      {:id "234", :value "Problem List"},
-                      {:id "345", :value "SIRS"}],
-                     :refs
-                     [{:href "http://host/property/{property-id}", :rel "self"},
-                      {:href "http://host/property/{property-id}", :rel "update"},
-                      {:href "http://host/property/{property-id}", :rel "delete"}]}}}
+            Body:
+                {"property" : {
+	             "id" : "1234",
+    	         "property" : "System",
+             	 "userdefined" : false,
+            	 "values" : [{"id" : "123", "value" : "DMS"},
+				             {"id" : "234", "value" : "Problem List"},
+				             {"id" : "345", "value" : "SIRS"}],
+            	 "refs" : [{"href" : "http://host/property/1234", "rel" : "self"},
+			               {"href" : "http://host/property/1234", "rel" : "update"},
+             			   {"href" : "http://host/property/1234", "rel" : "delete"}]}}
 		404 : Not Found
 		500 : Server Error
 		
@@ -253,34 +227,20 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
             Response Content-Type: application/json
 #### Responses ####
 		200 : OK
-            Body: {:status 200,
-                   :body
-                   {:properties
-                    [:property
-                     {:id "123456-1234-1234-1234-12345678",
-                      :property "System",
-                      :userdefined false,
-                      :values
-                      [{:id "123", :value "DMS"},
-                       {:id "234", :value "Problem List"},
-                       {:id "345", :value "SIRS"}],
-                      :refs
-                      [{:href "http://host/property/{property-id}", :rel "self"},
-                       {:href "http://host/property/{property-id}", :rel "update"},
-                       {:href "http://host/property/{property-id}", :rel "delete"}]},
-                     :property
-                     {:id "987654-9876-9876-9876-98765432",
-                      :property "Status",
-                      :userdefined false,
-                      :values
-                      [{:id "456", :value "Final"},
-                       {:id "567", :value "Under Development"},
-                       {:id "678", :value "Testing"}],
-                      :refs
-                      [{:href "http://host/property/{property-id}", :rel "self"},
-                       {:href "http://host/property/{property-id}", :rel "update"},
-                       {:href "http://host/property/{property-id}", :rel "delete"}]}]}}
-		500 : Server Error
+            Body:
+                {"properties":
+                 [{"property" : {
+	               "id" : "1234",
+    	           "property" : "System",
+             	   "userdefined" : false,
+            	   "values" : [{"id" : "123", "value" : "DMS"},
+				               {"id" : "234", "value" : "Problem List"},
+				               {"id" : "345", "value" : "SIRS"}],
+            	   "refs" : [{"href" : "http://host/property/1234", "rel" : "self"},
+			                 {"href" : "http://host/property/1234", "rel" : "update"},
+             		  	     {"href" : "http://host/property/1234", "rel" : "delete"}]}},
+             	  {"property": {…}}]}
+        500 : Server Error
 
 ## Logs ##
 ----
@@ -363,53 +323,45 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
                                   : application/msexcel
 #### Responses ####
 		200 : OK
-            Body: {:status 200,
-                   :body
-                   {:definition
-                    {:id "123456-1234-1234-1234-12345678",
-                     :title "Diabetes: 101",
-                     :author "Dale Suesse",
-                     :version "1.1",
-                     :created 2002-11-02,
-                     :uploaded 2012-07-08,
-                     :description "This is a test definition.",
-                     :comments
-                     [{:comment "Comment number one.", :user "M091355", date: 2012-07-08},
-                      {:comment "Comment numero dos.", :user "M091355", date: 2013-05-01}],
-                     :properties
-                     [{:prop "project", :val "Cohort Standardization"},
-                      {:prop "system", :val "DMS"},
-                      {:prop "usetype", :val "Sending Survey"},
-                      {:prop "applicable years", :val "1998-2008"}],
-                     :valuesets
-                     [{:valueset
-                      {:name "Name",
-                       :uri "http://id.mayo.edu/valueset/name",
-                       :href "http://host/cts2/valueset/name",
-                       :definition 
-                       {:name "1",
-                        :uri "http://id.mayo.edu/valueset/name/version/1",
-                        :resolution
-                        {:codeSystems
-                         [{:codeSystem "SNOMED", :version "2013"},
-                          {:codeSystem "RxNORM", :version "2012"}],
-                           :codes
-                           [{:codeSystem "SNOMED", :code "123", :description "Code 123 Description"},
-                            {:codeSystem "SNOMED", :code "456", :description "Code 456 Description"},
-                            {:codeSystem "SNOMED", :code "789", :description "Code 789 Description"},
-                            {:codeSystem "SNOMED", :code "012", :description "Code 012 Description"},
-                            {:codeSystem "RxNorm", :code "ABC", :description "Code ABC Description"},
-                            {:codeSystem "RxNorm", :code "DEF", :description "Code DEF Description"},
-                            {:codeSystem "RxNorm", :code "GHI", :description "Code GHI Description"}]}}}}],
-                     :refs
-                     [{:href "http://host//definition/{definition-id}", :rel "self"},
-                      {:href "http://host//definition/{definition-id}", :rel "update"},
-                      {:href "http://host//definition/{definition-id}", :rel "delete"}]}}}
+            Body:
+                {"definition" : {
+             	 "id" : "123456",
+	             "uploader" : "M091355",
+	             "uploaded" : "2013-07-10",
+	             "properties" : [{"property" : "title", "value" : "Diabetes: 101"},
+                                 {"property" : "author", "value" : "Dale Suesse"},
+					             {"property" : "version", "value" : "1.1"},
+                                 {"property" : "created", "value" : "2009-01-01"},
+                                 {"property" : "description", "value" : "This is a test definition."},
+                                 {"property" : "project", "value" : "CLIP"},
+                                 {"property" : "system", "value" : "DMS"},
+                                 {"property" : "usetype", "value" : "Sending Survey"},
+                                 {"property" : "applicableYear", "value" : "2009-present"}],
+	             "comments" : [{"comment" : "Comment number one", "user" : "M091355", "date" : "2013-07-10"},
+				               {"comment" : "Comment numero dos", "user" : "M091355", "date" : "2013-07-12"}],
+	             "valuesets" : [
+		            {"name" : "123.123.12.33.1445",
+		             "uri" : "",
+		             "href" : "",
+            		 "definition" : {
+		 	            "name" : "1",
+            		 	"uri" : "",
+		 	            "resolution" : {
+            		 		"codesystems" : [{"codesystem" : "SNOMED", "version" : "2013"},
+		 					                 {"codesystem" : "RxNORM", "version" : "2012"}],
+				            "codes" : [{"codesystem" : "SNOMED", "code" : "123", "description" : "Code 123 Description"},
+						               {"codesystem" : "SNOMED", "code" : "456", "description" : "Code 456 Description"},
+						               {"codesystem" : "SNOMED", "code" : "789", "description" : "Code 789 Description"},
+						               {"codesystem" : "RxNORM", "code" : "abc", "description" : "Code abc Description"},
+						               {"codesystem" : "RxNORM", "code" : "def", "description" : "Code def Description"}]}}}],
+    	          "refs" : [{"href" : "http://host/definition/123456", "rel" : "self"},
+			                {"href" : "http://host/definition/123456", "rel" : "update"},
+			                {"href" : "http://host/definition/123456", "rel" : "delete"}]}}
 		404 : Not Found
 		500 : Server Error
 		
 ### Get All ###
-	GET		/definition
+	GET		/definitions
 #### Request ####
     Header: Basic Authentication (optional - if present additional ref links will be returned)
             Response Content-Type : application/json
@@ -420,11 +372,9 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
                 property (optional)	: properties to filter
 #### Responses ####
 		200 : OK
-			Body: {:status 200,
-			       :body
-        		   {:definitions
-        		    [definition,
-        		     definition,…]}
+			Body:
+			    {"definitions" : [{"definition" : {…}},
+			                      {"definition" : {…}}]}
 		500 : Server Error
 		
 ## Response Codes ##
