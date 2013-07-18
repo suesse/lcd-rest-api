@@ -39,6 +39,13 @@ object LcdRestApiBuild extends Build {
         "org.apache.lucene" % "lucene-queryparser" % LuceneVersion,
         "org.apache.lucene" % "lucene-queries" % LuceneVersion,
         "net.liftweb" % "lift-json_2.10" % "2.5.1",
+        "org.apache.poi" % "poi" % "3.9",
+        "org.apache.poi" % "poi-ooxml" % "3.9",
+        "commons-codec" % "commons-codec" % "1.7",
+        "commons-logging" % "commons-logging" % "1.1.2",
+        "org.apache.httpcomponents" % "httpclient" % "4.2.3",
+        "org.apache.httpcomponents" % "httpcore" % "4.2.3",
+        "org.apache.httpcomponents" % "httpmime" % "4.2.3",
         "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
         "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
       ),
