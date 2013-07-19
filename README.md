@@ -228,7 +228,7 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
 #### Responses ####
 		200 : OK
             Body:
-                {"properties":
+                {"properties" :
                  [{"property" : {
 	               "id" : "1234",
     	           "property" : "System",
@@ -239,7 +239,7 @@ If `browse` doesn't launch your browser, manually open [http://localhost:8080/](
             	   "refs" : [{"href" : "http://host/property/1234", "rel" : "self"},
 			                 {"href" : "http://host/property/1234", "rel" : "update"},
              		  	     {"href" : "http://host/property/1234", "rel" : "delete"}]}},
-             	  {"property": {…}}]}
+             	  {"property" : {…}}]}
         500 : Server Error
 
 ## Logs ##
